@@ -1,0 +1,86 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\soro0\\work\\program\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{19D2A0E2-43D0-4D25-8DCD-6E0A0D4A5172}|AttendanceManagement\\AttendanceManagement.csproj|c:\\users\\soro0\\work\\program\\attendancemanagement\\attendancemanagement\\attendancemanagement\\attendancemanagement\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{19D2A0E2-43D0-4D25-8DCD-6E0A0D4A5172}|AttendanceManagement\\AttendanceManagement.csproj|solutionrelative:attendancemanagement\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19D2A0E2-43D0-4D25-8DCD-6E0A0D4A5172}|AttendanceManagement\\AttendanceManagement.csproj|c:\\users\\soro0\\work\\program\\attendancemanagement\\attendancemanagement\\attendancemanagement\\attendancemanagement\\setting.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{19D2A0E2-43D0-4D25-8DCD-6E0A0D4A5172}|AttendanceManagement\\AttendanceManagement.csproj|solutionrelative:attendancemanagement\\setting.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19D2A0E2-43D0-4D25-8DCD-6E0A0D4A5172}|AttendanceManagement\\AttendanceManagement.csproj|c:\\users\\soro0\\work\\program\\attendancemanagement\\attendancemanagement\\attendancemanagement\\attendancemanagement\\setting.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{19D2A0E2-43D0-4D25-8DCD-6E0A0D4A5172}|AttendanceManagement\\AttendanceManagement.csproj|solutionrelative:attendancemanagement\\setting.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19D2A0E2-43D0-4D25-8DCD-6E0A0D4A5172}|AttendanceManagement\\AttendanceManagement.csproj|c:\\users\\soro0\\work\\program\\attendancemanagement\\attendancemanagement\\attendancemanagement\\attendancemanagement\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{19D2A0E2-43D0-4D25-8DCD-6E0A0D4A5172}|AttendanceManagement\\AttendanceManagement.csproj|solutionrelative:attendancemanagement\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Setting.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\soro0\\work\\program\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\Setting.xaml.cs",
+              "RelativeDocumentMoniker": "AttendanceManagement\\Setting.xaml.cs",
+              "ToolTip": "C:\\Users\\soro0\\work\\program\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\Setting.xaml.cs",
+              "RelativeToolTip": "AttendanceManagement\\Setting.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-16T12:34:24.983Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Setting.xaml",
+              "DocumentMoniker": "C:\\Users\\soro0\\work\\program\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\Setting.xaml",
+              "RelativeDocumentMoniker": "AttendanceManagement\\Setting.xaml",
+              "ToolTip": "C:\\Users\\soro0\\work\\program\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\Setting.xaml",
+              "RelativeToolTip": "AttendanceManagement\\Setting.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-10-16T12:33:47.057Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\soro0\\work\\program\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "AttendanceManagement\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\soro0\\work\\program\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\MainWindow.xaml",
+              "RelativeToolTip": "AttendanceManagement\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-10-16T12:32:34.155Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\soro0\\work\\program\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "AttendanceManagement\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\soro0\\work\\program\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\MainWindow.xaml.cs",
+              "RelativeToolTip": "AttendanceManagement\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-16T12:32:33.762Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
