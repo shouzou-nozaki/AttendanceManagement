@@ -23,7 +23,7 @@ namespace AttendanceApp
         public MainWindow()
         {
             InitializeComponent();
-            txtSystemTime.Text = DateTime.Now.ToString("yyyy/MMMM/dd HH:mm");
+            txtSystemTime.Text = DateTime.Now.ToString("yyyy/MM/dd HH:mm");
 
             // 現在日時タイマー
             DispatcherTimer timer = new DispatcherTimer();
@@ -42,7 +42,7 @@ namespace AttendanceApp
         private void Timer_Tick(object sender, EventArgs e)
         {
             // 日付ラベル表示を変更
-            this.txtSystemTime.Text = DateTime.Now.ToString("yyyy/MMMM/dd HH:mm");
+            this.txtSystemTime.Text = DateTime.Now.ToString("yyyy/MM/dd HH:mm");
 
             // 日付変更時処理
             if(DateTime.Now.ToString("HH:mm").Equals("00:00"))

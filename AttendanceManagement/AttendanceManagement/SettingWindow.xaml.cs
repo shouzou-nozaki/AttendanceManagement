@@ -20,31 +20,41 @@ namespace AttendanceManagement
 
         public SettingWindow()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
 
-            // 設定情報をデシリアライズ
-            string fileName = @"settingInfo.xml";
+                // 設定情報ファイル名
+                string settingFile = @"settingInfo.xml";
 
-            // XmlSerializerオブジェクトを作成
-            System.Xml.Serialization.XmlSerializer serializer =
-                new System.Xml.Serialization.XmlSerializer(typeof(SettingInfo));
-            // 読み込むファイルを開く
-            System.IO.StreamReader sr = new System.IO.StreamReader(
-                fileName, new System.Text.UTF8Encoding(false));
-            // XMLファイルから読み込み、逆シリアル化する
-            SettingInfo obj = (SettingInfo)serializer.Deserialize(sr);
+                // 設定情報がない場合は処理を抜ける
+                if (!File.Exists(settingFile)) return;
 
-            // 画面に値を入れる
-            txtUserName.Text = obj.UserName;
-            txtStartTime.Text = obj.StartTime;
-            txtEndTime.Text = obj.EndTime;
-            txtBreakFrom.Text = obj.BreakFrom;
-            txtBreakTo.Text = obj.BreakTo;
-            txtExcelPath.Text = obj.ExcelFilePath;
+                // 設定情報デシリアライズ
+                // XmlSerializerオブジェクトを作成
+                System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(typeof(SettingInfo));
+                // 読み込むファイルを開く
+                System.IO.StreamReader sr = new System.IO.StreamReader(settingFile, new System.Text.UTF8Encoding(false));
+                // XMLファイルから読み込み、デシリアライズする
+                SettingInfo obj = (SettingInfo)serializer.Deserialize(sr);
 
-            //ファイルを閉じる
-            sr.Close();
+                // 画面に値を入れる
+                txtUserName.Text = obj.UserName;
+                txtStartTime.Text = obj.StartTime;
+                txtEndTime.Text = obj.EndTime;
+                txtBreakFrom.Text = obj.BreakFrom;
+                txtBreakTo.Text = obj.BreakTo;
+                txtExcelPath.Text = obj.ExcelFilePath;
 
+                //ファイルを閉じる
+                sr.Close();
+            }
+            catch(Exception ex)
+            {
+                // ログ出力
+                
+            }
+           
         }
 
         /// <summary>
@@ -75,38 +85,41 @@ namespace AttendanceManagement
         /// <param name="e"></param>
         private void SaveSettings_Click(object sender, RoutedEventArgs e)
         {
-            StartTime = txtStartTime.Text;
-            EndTime = txtEndTime.Text;
-            ExcelFilePath = txtExcelPath.Text;
+            try
+            {
 
-            // 休憩時間が整数値であるか確認
-
-
-            // 設定情報をシリアライズ
-            String settingFile = @"settingInfo.xml";
-
-            SettingInfo obj = new SettingInfo();
-            obj.UserName = txtUserName.Text;    // 利用者名
-            obj.StartTime = txtStartTime.Text;  // 始業時間
-            obj.EndTime = txtEndTime.Text;　　　// 終業時間
-            obj.BreakFrom = txtBreakFrom.Text;  // 休憩時間(カラ)
-            obj.BreakTo = txtBreakTo.Text;      // 休憩時間(マデ)
-            obj.ExcelFilePath = ExcelFilePath;  // Excel出力先
-
-            System.Xml.Serialization.XmlSerializer serializer =
-            new System.Xml.Serialization.XmlSerializer(typeof(SettingInfo));
-
-            //書き込むファイルを開く（UTF-8 BOM無し）
-            System.IO.StreamWriter sw = new System.IO.StreamWriter(
-                settingFile, false, new System.Text.UTF8Encoding(false));
-            //シリアル化し、XMLファイルに保存する
-            serializer.Serialize(sw, obj);
-            //ファイルを閉じる
-            sw.Close();
+                // 休憩時間が整数値であるか確認
 
 
-            this.DialogResult = true;  // ウィンドウを閉じるときに結果を返す
-            this.Close();
+                // 設定情報をシリアライズ
+                String settingFile = @"settingInfo.xml";
+
+                SettingInfo obj = new SettingInfo();
+                obj.UserName = txtUserName.Text;        // 利用者名
+                obj.StartTime = txtStartTime.Text;      // 始業時間
+                obj.EndTime = txtEndTime.Text;          // 終業時間
+                obj.BreakFrom = txtBreakFrom.Text;      // 休憩時間(カラ)
+                obj.BreakTo = txtBreakTo.Text;          // 休憩時間(マデ)
+                obj.ExcelFilePath = txtExcelPath.Text;  // Excel出力先
+
+                System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(typeof(SettingInfo));
+
+                //書き込むファイルを開く（UTF-8 BOM無し）
+                System.IO.StreamWriter sw = new System.IO.StreamWriter(settingFile, false, new System.Text.UTF8Encoding(false));
+                //シリアル化し、XMLファイルに保存する
+                serializer.Serialize(sw, obj);
+                //ファイルを閉じる
+                sw.Close();
+
+
+                this.DialogResult = true;  // ウィンドウを閉じるときに結果を返す
+                this.Close();
+            }
+            catch(Exception ex)
+            {
+                // ログ出力
+            }
+            
         }
     }
 }
