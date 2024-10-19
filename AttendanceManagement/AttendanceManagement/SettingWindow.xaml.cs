@@ -1,0 +1,112 @@
+﻿using Microsoft.Win32;
+using Microsoft.WindowsAPICodePack.Dialogs;
+using System;
+using System.IO;
+using System.Windows;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using AttendanceManagement.dao;
+using OfficeOpenXml.SystemDrawing.Text;
+
+namespace AttendanceManagement
+{
+    public partial class SettingWindow : Window
+    {
+        public string UserName { get; private set; }       // 利用者名
+        public string StartTime { get; private set; }      // 始業時間
+        public string EndTime { get; private set; }        // 終業時間
+        public int BreakTime { get; private set; }         // 休憩時間（分）
+        public string ExcelFilePath { get; private set; }  // Excel出力先
+
+        public SettingWindow()
+        {
+            InitializeComponent();
+
+            // 設定情報をデシリアライズ
+            string fileName = @"settingInfo.xml";
+
+            // XmlSerializerオブジェクトを作成
+            System.Xml.Serialization.XmlSerializer serializer =
+                new System.Xml.Serialization.XmlSerializer(typeof(SettingInfo));
+            // 読み込むファイルを開く
+            System.IO.StreamReader sr = new System.IO.StreamReader(
+                fileName, new System.Text.UTF8Encoding(false));
+            // XMLファイルから読み込み、逆シリアル化する
+            SettingInfo obj = (SettingInfo)serializer.Deserialize(sr);
+
+            // 画面に値を入れる
+            txtUserName.Text = obj.UserName;
+            txtStartTime.Text = obj.StartTime;
+            txtEndTime.Text = obj.EndTime;
+            txtBreakFrom.Text = obj.BreakFrom;
+            txtBreakTo.Text = obj.BreakTo;
+            txtExcelPath.Text = obj.ExcelFilePath;
+
+            //ファイルを閉じる
+            sr.Close();
+
+        }
+
+        /// <summary>
+        /// 参照ボタン押下イベント
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Browse_Click(object sender, RoutedEventArgs e)
+        {
+            using (CommonOpenFileDialog cofd = new CommonOpenFileDialog())
+            {
+                // フォルダを選択できるようにする
+                cofd.IsFolderPicker = true;
+
+                if (cofd.ShowDialog() == CommonFileDialogResult.Ok)
+                {
+
+                    txtExcelPath.Text = cofd.FileName;
+                }
+            }
+
+        }
+
+        /// <summary>
+        /// 保存ボタン押下イベント
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SaveSettings_Click(object sender, RoutedEventArgs e)
+        {
+            StartTime = txtStartTime.Text;
+            EndTime = txtEndTime.Text;
+            ExcelFilePath = txtExcelPath.Text;
+
+            // 休憩時間が整数値であるか確認
+
+
+            // 設定情報をシリアライズ
+            String settingFile = @"settingInfo.xml";
+
+            SettingInfo obj = new SettingInfo();
+            obj.UserName = txtUserName.Text;    // 利用者名
+            obj.StartTime = txtStartTime.Text;  // 始業時間
+            obj.EndTime = txtEndTime.Text;　　　// 終業時間
+            obj.BreakFrom = txtBreakFrom.Text;  // 休憩時間(カラ)
+            obj.BreakTo = txtBreakTo.Text;      // 休憩時間(マデ)
+            obj.ExcelFilePath = ExcelFilePath;  // Excel出力先
+
+            System.Xml.Serialization.XmlSerializer serializer =
+            new System.Xml.Serialization.XmlSerializer(typeof(SettingInfo));
+
+            //書き込むファイルを開く（UTF-8 BOM無し）
+            System.IO.StreamWriter sw = new System.IO.StreamWriter(
+                settingFile, false, new System.Text.UTF8Encoding(false));
+            //シリアル化し、XMLファイルに保存する
+            serializer.Serialize(sw, obj);
+            //ファイルを閉じる
+            sw.Close();
+
+
+            this.DialogResult = true;  // ウィンドウを閉じるときに結果を返す
+            this.Close();
+        }
+    }
+}
