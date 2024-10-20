@@ -7,15 +7,13 @@ using System.Threading;
 using System.Runtime.CompilerServices;
 using System.Windows.Threading;
 using AttendanceManagement;
-
+using AttendanceManagement.dao;
 
 
 namespace AttendanceApp
 {
     public partial class MainWindow : Window
     {
-        private DateTime? startTime;  // 出勤時間を保持
-        private DateTime? endTime;    // 退勤時間を保持
 
         /// <summary>
         /// コンストラクタ
@@ -23,10 +21,10 @@ namespace AttendanceApp
         public MainWindow()
         {
             InitializeComponent();
-            txtSystemTime.Text = DateTime.Now.ToString("yyyy/MM/dd HH:mm");
 
             // 現在日時タイマー
-            DispatcherTimer timer = new DispatcherTimer();
+            txtSystemTime.Text = DateTime.Now.ToString("yyyy/MM/dd HH:mm");
+            var timer = new DispatcherTimer();
             timer.Tick += Timer_Tick;
             timer.Interval = new TimeSpan(1); // 1秒ごとに行う
 
@@ -62,8 +60,8 @@ namespace AttendanceApp
         private void BtnStart_Click(object sender, RoutedEventArgs e)
         {
             // 出勤時間表示
-            startTime = DateTime.Now;
-            lblStartTime.Text = startTime?.ToString("HH:mm:ss");
+            var startTime = DateTime.Now;
+            lblStartTime.Text = startTime.ToString("HH:mm:ss");
 
             // 退勤時間クリア
             lblEndTime.Text = "";
@@ -87,19 +85,13 @@ namespace AttendanceApp
         /// <param name="e"></param>
         private void BtnEnd_Click(object sender, RoutedEventArgs e)
         {
-            // memo:ボタン制御したからこの部分は必要ないはず・・・
-            if (startTime == null)
-            {
-                MessageBox.Show("まず出勤を打刻してください！");
-                return;
-            }
-
-            endTime = DateTime.Now;
-            lblEndTime.Text = endTime?.ToString("HH:mm:ss");
+            // 現在時刻を表示
+            var endTime = DateTime.Now;
+            lblEndTime.Text = endTime.ToString("HH:mm:ss");
 
             // 勤務時間を計算して表示
-            TimeSpan workDuration = endTime.Value - startTime.Value;
-            lblWorkHours.Text = workDuration.TotalHours.ToString("F2") + " 時間";
+            TimeSpan workDuration = DateTime.Parse(lblEndTime.Text) - DateTime.Parse(lblStartTime.Text);
+            lblWorkHours.Text = workDuration.Hours.ToString("00") + "時間" + workDuration.Minutes.ToString("00") + "分";
 
             // エクセル出力
             SaveToExcel();
@@ -133,31 +125,55 @@ namespace AttendanceApp
             // エクセルファイルは年ごとに作られる
             // シートは月ごと
 
+
+            // 設定情報ファイル名
+            string settingFile = @"settingInfo.xml";
+            SettingInfo settingInfo = new SettingInfo();
+
+            // 設定情報ファイルがあればデシリアライズ
+            if (File.Exists(settingFile))
+            {
+                // 設定情報デシリアライズ
+                // XmlSerializerオブジェクトを作成
+                var serializer = new System.Xml.Serialization.XmlSerializer(typeof(SettingInfo));
+                // 読み込むファイルを開く
+                var sr = new StreamReader(settingFile, new System.Text.UTF8Encoding(false));
+                // デシリアライズ内容を設定情報にセット
+                settingInfo = (SettingInfo)serializer.Deserialize(sr);
+            }
+
             // Excelファイル名
-            string filePath = $"勤怠データ_{DateTime.Now:yyyy}.xlsx";
-            FileInfo file = new FileInfo(filePath);
+            var fileName = $"勤怠データ_{DateTime.Now:yyyy}({settingInfo.UserName}).xlsx";
+
+            // Excelファイルがないとき
+            if(!File.Exists(Path.Combine(settingInfo.ExcelFilePath, fileName)))
+            {
+                // テンプレートファイル TODO:本番用にパスを変更
+                fileName = "C:\\Users\\soro0\\work\\program\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\Template\\template.xlsx";
+                
+            }
+
+            // ファイル情報読み込み
+            FileInfo file = new FileInfo(fileName);
 
             // ライセンス設定
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
             using (ExcelPackage package = new ExcelPackage(file))
             {
+                // ワークシートを取得
+                ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
                 // シートがなければ作成
-                ExcelWorksheet worksheet = package.Workbook.Worksheets.FirstOrDefault() ?? package.Workbook.Worksheets.Add("勤怠データ");
-
-                int row = worksheet.Dimension?.Rows + 1 ?? 1;
+                //worksheet = package.Workbook.Worksheets.FirstOrDefault() ?? package.Workbook.Worksheets.Add($"{DateTime.Now:yyyy}_{DateTime.Now:MM}");
 
                 // 出勤・退勤時間を書き込み
-                worksheet.Cells[row, 1].Value = DateTime.Now.ToString("yyyy-MM-dd");
-                worksheet.Cells[row, 2].Value = startTime?.ToString("HH:mm:ss");
-                worksheet.Cells[row, 3].Value = endTime?.ToString("HH:mm:ss");
-                worksheet.Cells[row, 4].Value = lblWorkHours.Text;
+
+                fileName = $"勤怠データ_{DateTime.Now:yyyy}({settingInfo.UserName}).xlsx";
 
                 // Excelファイルの保存
-                package.Save();
+                package.SaveAs(Path.Combine(settingInfo.ExcelFilePath, fileName));
             }
 
-            //MessageBox.Show("勤怠データがExcelに保存されました。");
         }
 
     }

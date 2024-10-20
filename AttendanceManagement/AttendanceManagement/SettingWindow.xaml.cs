@@ -12,6 +12,7 @@ namespace AttendanceManagement
 {
     public partial class SettingWindow : Window
     {
+        public SettingInfo SettingInfo { get; private set; }
         public string UserName { get; private set; }       // 利用者名
         public string StartTime { get; private set; }      // 始業時間
         public string EndTime { get; private set; }        // 終業時間
@@ -34,17 +35,17 @@ namespace AttendanceManagement
                 // XmlSerializerオブジェクトを作成
                 System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(typeof(SettingInfo));
                 // 読み込むファイルを開く
-                System.IO.StreamReader sr = new System.IO.StreamReader(settingFile, new System.Text.UTF8Encoding(false));
+                StreamReader sr = new StreamReader(settingFile, new System.Text.UTF8Encoding(false));
                 // XMLファイルから読み込み、デシリアライズする
-                SettingInfo obj = (SettingInfo)serializer.Deserialize(sr);
+                this.SettingInfo = (SettingInfo)serializer.Deserialize(sr);
 
                 // 画面に値を入れる
-                txtUserName.Text = obj.UserName;
-                txtStartTime.Text = obj.StartTime;
-                txtEndTime.Text = obj.EndTime;
-                txtBreakFrom.Text = obj.BreakFrom;
-                txtBreakTo.Text = obj.BreakTo;
-                txtExcelPath.Text = obj.ExcelFilePath;
+                txtUserName.Text = this.SettingInfo.UserName;
+                txtStartTime.Text = this.SettingInfo.StartTime;
+                txtEndTime.Text = this.SettingInfo.EndTime;
+                txtBreakFrom.Text = this.SettingInfo.BreakFrom;
+                txtBreakTo.Text = this.SettingInfo.BreakTo;
+                txtExcelPath.Text = this.SettingInfo.ExcelFilePath;
 
                 //ファイルを閉じる
                 sr.Close();
@@ -111,6 +112,8 @@ namespace AttendanceManagement
                 //ファイルを閉じる
                 sw.Close();
 
+                // グローバル変数に設定
+                this.SettingInfo = obj;
 
                 this.DialogResult = true;  // ウィンドウを閉じるときに結果を返す
                 this.Close();
