@@ -26,16 +26,16 @@ namespace AttendanceManagement
                 InitializeComponent();
 
                 // 設定情報ファイル名
-                string settingFile = @"settingInfo.xml";
+                var settingFile = @"settingInfo.xml";
 
                 // 設定情報がない場合は処理を抜ける
                 if (!File.Exists(settingFile)) return;
 
                 // 設定情報デシリアライズ
                 // XmlSerializerオブジェクトを作成
-                System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(typeof(SettingInfo));
+                var serializer = new System.Xml.Serialization.XmlSerializer(typeof(SettingInfo));
                 // 読み込むファイルを開く
-                StreamReader sr = new StreamReader(settingFile, new System.Text.UTF8Encoding(false));
+                var sr = new StreamReader(settingFile, new System.Text.UTF8Encoding(false));
                 // XMLファイルから読み込み、デシリアライズする
                 this.SettingInfo = (SettingInfo)serializer.Deserialize(sr);
 
@@ -88,14 +88,10 @@ namespace AttendanceManagement
         {
             try
             {
-
-                // 休憩時間が整数値であるか確認
-
-
                 // 設定情報をシリアライズ
-                String settingFile = @"settingInfo.xml";
+                var settingFile = @"settingInfo.xml";
 
-                SettingInfo obj = new SettingInfo();
+                var obj = new SettingInfo();
                 obj.UserName = txtUserName.Text;        // 利用者名
                 obj.StartTime = txtStartTime.Text;      // 始業時間
                 obj.EndTime = txtEndTime.Text;          // 終業時間
@@ -103,10 +99,10 @@ namespace AttendanceManagement
                 obj.BreakTo = txtBreakTo.Text;          // 休憩時間(マデ)
                 obj.ExcelFilePath = txtExcelPath.Text;  // Excel出力先
 
-                System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(typeof(SettingInfo));
+                var serializer = new System.Xml.Serialization.XmlSerializer(typeof(SettingInfo));
 
                 //書き込むファイルを開く（UTF-8 BOM無し）
-                System.IO.StreamWriter sw = new System.IO.StreamWriter(settingFile, false, new System.Text.UTF8Encoding(false));
+                var sw = new StreamWriter(settingFile, false, new System.Text.UTF8Encoding(false));
                 //シリアル化し、XMLファイルに保存する
                 serializer.Serialize(sw, obj);
                 //ファイルを閉じる
