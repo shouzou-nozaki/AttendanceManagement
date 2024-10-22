@@ -140,19 +140,27 @@ namespace AttendanceManagement.Model
 
         public override void SaveToExcel(SettingInfo settingInfo, AttendanceInfo attendanceInfo, string excelFileName)
         {
-            // テンプレートコピー
-            CopyTemplate(settingInfo, excelFileName);
-
-            using (ExcelPackage package = new ExcelPackage(Path.Combine(settingInfo.ExcelFilePath, excelFileName)))
+            try
             {
-                // Excel基本フレーム作成
-                var workSheet = MakeExcelFrame(package, settingInfo);
-                // 勤怠情報書き込み
-                workSheet = WriteAttendanceInfo(package, settingInfo, attendanceInfo , excelFileName);
-                // 保存
-                Save(package, settingInfo, excelFileName);
+                // テンプレートコピー
+                CopyTemplate(settingInfo, excelFileName);
 
+                using (ExcelPackage package = new ExcelPackage(Path.Combine(settingInfo.ExcelFilePath, excelFileName)))
+                {
+                    // Excel基本フレーム作成
+                    var workSheet = MakeExcelFrame(package, settingInfo);
+                    // 勤怠情報書き込み
+                    workSheet = WriteAttendanceInfo(package, settingInfo, attendanceInfo, excelFileName);
+                    // 保存
+                    Save(package, settingInfo, excelFileName);
+
+                }
             }
+            catch (Exception ex) 
+            { 
+               Console.WriteLine(ex.Message);
+            }
+            
 
         }
     }
@@ -164,13 +172,21 @@ namespace AttendanceManagement.Model
     {
         public override void SaveToExcel(SettingInfo settingInfo, AttendanceInfo attendanceInfo, string excelFileName)
         {
-            using (ExcelPackage package = new ExcelPackage(Path.Combine(settingInfo.ExcelFilePath, excelFileName)))
+            try
             {
-                // 勤怠情報書き込み
-                var workSheet = WriteAttendanceInfo(package, settingInfo, attendanceInfo, excelFileName);
-                // 保存
-                Save(package, settingInfo, excelFileName);
+                using (ExcelPackage package = new ExcelPackage(Path.Combine(settingInfo.ExcelFilePath, excelFileName)))
+                {
+                    // 勤怠情報書き込み
+                    var workSheet = WriteAttendanceInfo(package, settingInfo, attendanceInfo, excelFileName);
+                    // 保存
+                    Save(package, settingInfo, excelFileName);
+                }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+           
         }
     }
 
