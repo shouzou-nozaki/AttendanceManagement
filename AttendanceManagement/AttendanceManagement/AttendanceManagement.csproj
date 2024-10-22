@@ -142,7 +142,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="dao\AttendanceInfo.cs" />
     <Compile Include="dao\SettingInfo.cs" />
+    <Compile Include="Model\ExcelOperation.cs" />
+    <Compile Include="Model\SettingInfoSerializer.cs" />
     <Compile Include="SettingWindow.xaml.cs">
       <DependentUpon>SettingWindow.xaml</DependentUpon>
     </Compile>
@@ -197,5 +200,6 @@
   <ItemGroup>
     <Resource Include="Resources\calendar.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
