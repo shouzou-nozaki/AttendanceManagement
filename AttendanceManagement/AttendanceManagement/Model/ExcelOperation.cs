@@ -34,7 +34,8 @@ namespace AttendanceManagement.Model
         public void CopyTemplate(SettingInfo settingInfo, string excelFileName)
         {
             // TODO:本番用に変更
-            var templateFolder = @"C:\Users\soro0\work\program\AttendanceManagement\AttendanceManagement\AttendanceManagement\AttendanceManagement\Template";
+            //var templateFolder = @"C:\Users\soro0\work\program\AttendanceManagement\AttendanceManagement\AttendanceManagement\AttendanceManagement\Template";
+            var templateFolder = AppDomain.CurrentDomain.BaseDirectory;
             var templateFile = "template.xlsx";
             File.Copy($"{Path.Combine(templateFolder, templateFile)}", $"{Path.Combine(settingInfo.ExcelFilePath, excelFileName)}");
         }
