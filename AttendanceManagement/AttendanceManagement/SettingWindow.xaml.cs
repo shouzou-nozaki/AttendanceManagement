@@ -53,9 +53,10 @@ namespace AttendanceManagement
                 {
                     // フォルダを選択できるようにする
                     cofd.IsFolderPicker = true;
-
+                    this.Topmost = false;
                     // 選択されたフォルダパスを画面に表示
                     if (cofd.ShowDialog() == CommonFileDialogResult.Ok) txtExcelPath.Text = cofd.FileName;
+                    this.Topmost = true;
                 }
             }
             catch (Exception ex) 
