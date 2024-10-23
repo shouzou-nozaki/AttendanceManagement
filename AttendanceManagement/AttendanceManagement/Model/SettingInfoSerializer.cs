@@ -1,11 +1,8 @@
 ﻿using AttendanceManagement.dao;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.Finance.Implementations;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace AttendanceManagement.Model
 {
@@ -20,15 +17,17 @@ namespace AttendanceManagement.Model
         /// <returns>設定情報</returns>
         public SettingInfo GetSettingInfo()
         {
+            XmlSerializer serializer = null;
+            StreamReader sr = null;
             try
             {
                 // 設定情報がない場合は、設定情報を新規作成
                 if (!File.Exists(this.SettingFile)) return new SettingInfo();
 
                 // XmlSerializerオブジェクトを作成
-                var serializer = new System.Xml.Serialization.XmlSerializer(typeof(SettingInfo));
+                serializer = new System.Xml.Serialization.XmlSerializer(typeof(SettingInfo));
                 // 読み込むファイルを開く
-                var sr = new StreamReader(this.SettingFile, new UTF8Encoding(false));
+                sr = new StreamReader(this.SettingFile, new UTF8Encoding(false));
 
                 // デシリアライズした設定情報を返す
                 return (SettingInfo)serializer.Deserialize(sr);
@@ -41,6 +40,11 @@ namespace AttendanceManagement.Model
                 // 新規設定情報を返す
                 return new SettingInfo();
             }
+            finally
+            {
+                if (sr != null) sr.Close();
+
+            }
         }
 
         /// <summary>
@@ -49,13 +53,15 @@ namespace AttendanceManagement.Model
         /// <param name="settingInfo">設定情報</param>
         public void SetSettingInfo(SettingInfo settingInfo)
         {
-            // 設定情報をシリアライズ
-            var serializer = new System.Xml.Serialization.XmlSerializer(typeof(SettingInfo));
-            //書き込むファイルを開く（UTF-8 BOM無し）
-            var sw = new StreamWriter(this.SettingFile, false, new UTF8Encoding(false));
+            XmlSerializer serializer = null;
+            StreamWriter sw = null;
 
             try
             {
+                // 設定情報をシリアライズ
+                serializer = new XmlSerializer(typeof(SettingInfo));
+                //書き込むファイルを開く（UTF-8 BOM無し）
+                sw = new StreamWriter(this.SettingFile, false, new UTF8Encoding(false));
                 //シリアル化し、XMLファイルに保存する
                 serializer.Serialize(sw, settingInfo);
             }

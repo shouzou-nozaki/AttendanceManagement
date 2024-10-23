@@ -8,37 +8,37 @@
         <StackPanel>
             <!-- 利用者名 -->
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="利用者名" Margin="20" FontWeight="Bold"/>
-                <TextBox x:Name="txtUserName" Width="100" Margin="20" VerticalAlignment="Center"/>
+                <TextBlock Text="利用者名" Margin="20" FontWeight="Bold" FontSize="15"/>
+                <TextBox x:Name="txtUserName" Width="100" Margin="20" VerticalAlignment="Center" FontSize="15"/>
             </StackPanel>
 
             <!-- 出勤・退勤・休憩時間の設定 -->
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="始業時間" Margin="20" FontWeight="Bold" VerticalAlignment="Center"/>
-                <xctk:TimePicker x:Name="txtStartTime" Width="100" Margin="20" HorizontalAlignment="Center" Height="20" TimeInterval="00:30:00"/>
+                <TextBlock Text="始業時間" Margin="20" FontWeight="Bold" VerticalAlignment="Center" FontSize="15"/>
+                <xctk:TimePicker x:Name="txtStartTime" Width="100" Margin="20" HorizontalAlignment="Center" Height="20" TimeInterval="00:30:00" FontSize="15"/>
             </StackPanel>
             
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="終業時間" Margin="20" FontWeight="Bold" VerticalAlignment="Center"/>
-                <xctk:TimePicker x:Name="txtEndTime" Width="100" Margin="20" HorizontalAlignment="Center" Height="20" TimeInterval="00:30:00"/>
+                <TextBlock Text="終業時間" Margin="20" FontWeight="Bold" VerticalAlignment="Center" FontSize="15"/>
+                <xctk:TimePicker x:Name="txtEndTime" Width="100" Margin="20" HorizontalAlignment="Center" Height="20" TimeInterval="00:30:00" FontSize="15"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="休憩時間" Margin="20" FontWeight="Bold" VerticalAlignment="Center"/>
-                <xctk:TimePicker x:Name="txtBreakFrom" Width="100" Margin="20,20,5,20" HorizontalAlignment="Center" Height="20" TimeInterval="00:30:00"/>
-                <TextBlock Text="～" Margin="0,20,0,20" VerticalAlignment="Center"/>
-                <xctk:TimePicker x:Name="txtBreakTo" Width="100" Margin="5,20,20,20" HorizontalAlignment="Center" Height="20" TimeInterval="00:30:00"/>
+                <TextBlock Text="休憩時間" Margin="20" FontWeight="Bold" VerticalAlignment="Center" FontSize="15"/>
+                <xctk:TimePicker x:Name="txtBreakFrom" Width="100" Margin="20,20,5,20" HorizontalAlignment="Center" Height="20" TimeInterval="00:30:00" FontSize="15"/>
+                <TextBlock Text="～" Margin="0,20,0,20" VerticalAlignment="Center" FontSize="15"/>
+                <xctk:TimePicker x:Name="txtBreakTo" Width="100" Margin="5,20,20,20" HorizontalAlignment="Center" Height="20" TimeInterval="00:30:00" FontSize="15"/>
             </StackPanel>
             
             <!-- Excel出力先の設定 -->
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Excel 出力先" Margin="20" FontWeight="Bold"/>
+                <TextBlock Text="Excel 出力先" Margin="20" FontWeight="Bold" FontSize="15"/>
                 <TextBox x:Name="txtExcelPath" Text="" Width="300" Margin="0,20,20,20" IsReadOnly="True"/>
-                <Button Content="参照" Width="80" Click="Browse_Click" Margin="0,20,20,20"/>
+                <Button Content="参照" Width="80" Click="Browse_Click" Margin="0,20,20,20" FontSize="15"/>
             </StackPanel>
 
             <!-- 保存ボタン -->
-            <Button Content="保存" Width="100"  Margin="0,20,0,0" Click="SaveSettings_Click" HorizontalAlignment="Right"/>
+            <Button Content="保存" Width="100"  Margin="0,20,0,0" Click="SaveSettings_Click" HorizontalAlignment="Right" FontSize="15"/>
         </StackPanel>
     </Grid>
 </Window>

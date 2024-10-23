@@ -3,8 +3,34 @@
   "WorkspaceRootPath": "C:\\Users\\soro0\\work\\program\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{19D2A0E2-43D0-4D25-8DCD-6E0A0D4A5172}|AttendanceManagement\\AttendanceManagement.csproj|c:\\users\\soro0\\work\\program\\attendancemanagement\\attendancemanagement\\attendancemanagement\\attendancemanagement\\model\\exceloperation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{19D2A0E2-43D0-4D25-8DCD-6E0A0D4A5172}|AttendanceManagement\\AttendanceManagement.csproj|C:\\Users\\soro0\\work\\program\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\attendancemanagement\\model\\settinginfoserializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{19D2A0E2-43D0-4D25-8DCD-6E0A0D4A5172}|AttendanceManagement\\AttendanceManagement.csproj|solutionrelative:attendancemanagement\\model\\settinginfoserializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19D2A0E2-43D0-4D25-8DCD-6E0A0D4A5172}|AttendanceManagement\\AttendanceManagement.csproj|c:\\users\\soro0\\work\\program\\attendancemanagement\\attendancemanagement\\attendancemanagement\\attendancemanagement\\model\\attendanceinfoserializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{19D2A0E2-43D0-4D25-8DCD-6E0A0D4A5172}|AttendanceManagement\\AttendanceManagement.csproj|solutionrelative:attendancemanagement\\model\\attendanceinfoserializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|AttendanceManagement||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19D2A0E2-43D0-4D25-8DCD-6E0A0D4A5172}|AttendanceManagement\\AttendanceManagement.csproj|c:\\users\\soro0\\work\\program\\attendancemanagement\\attendancemanagement\\attendancemanagement\\attendancemanagement\\settingwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{19D2A0E2-43D0-4D25-8DCD-6E0A0D4A5172}|AttendanceManagement\\AttendanceManagement.csproj|solutionrelative:attendancemanagement\\settingwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19D2A0E2-43D0-4D25-8DCD-6E0A0D4A5172}|AttendanceManagement\\AttendanceManagement.csproj|C:\\Users\\soro0\\work\\program\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\attendancemanagement\\model\\exceloperation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{19D2A0E2-43D0-4D25-8DCD-6E0A0D4A5172}|AttendanceManagement\\AttendanceManagement.csproj|solutionrelative:attendancemanagement\\model\\exceloperation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19D2A0E2-43D0-4D25-8DCD-6E0A0D4A5172}|AttendanceManagement\\AttendanceManagement.csproj|C:\\Users\\soro0\\work\\program\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\attendancemanagement\\dao\\attendanceinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{19D2A0E2-43D0-4D25-8DCD-6E0A0D4A5172}|AttendanceManagement\\AttendanceManagement.csproj|solutionrelative:attendancemanagement\\dao\\attendanceinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19D2A0E2-43D0-4D25-8DCD-6E0A0D4A5172}|AttendanceManagement\\AttendanceManagement.csproj|C:\\Users\\soro0\\work\\program\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\attendancemanagement\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{19D2A0E2-43D0-4D25-8DCD-6E0A0D4A5172}|AttendanceManagement\\AttendanceManagement.csproj|solutionrelative:attendancemanagement\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19D2A0E2-43D0-4D25-8DCD-6E0A0D4A5172}|AttendanceManagement\\AttendanceManagement.csproj|c:\\users\\soro0\\work\\program\\attendancemanagement\\attendancemanagement\\attendancemanagement\\attendancemanagement\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|5e9a8ac2-4f34-4521-858f-4c248ba31532"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +40,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,16 +48,89 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AttendanceInfoSerializer.cs",
+              "DocumentMoniker": "C:\\Users\\soro0\\work\\program\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\Model\\AttendanceInfoSerializer.cs",
+              "RelativeDocumentMoniker": "AttendanceManagement\\Model\\AttendanceInfoSerializer.cs",
+              "ToolTip": "C:\\Users\\soro0\\work\\program\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\Model\\AttendanceInfoSerializer.cs",
+              "RelativeToolTip": "AttendanceManagement\\Model\\AttendanceInfoSerializer.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAASwE0AAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T13:15:10.755Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AttendanceManagement",
+              "DocumentMoniker": "C:\\Users\\soro0\\work\\program\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement.csproj",
+              "RelativeDocumentMoniker": "AttendanceManagement\\AttendanceManagement.csproj",
+              "ToolTip": "C:\\Users\\soro0\\work\\program\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement.csproj",
+              "RelativeToolTip": "AttendanceManagement\\AttendanceManagement.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-10-23T13:11:20.316Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SettingWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\soro0\\work\\program\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\SettingWindow.xaml",
+              "RelativeDocumentMoniker": "AttendanceManagement\\SettingWindow.xaml",
+              "ToolTip": "C:\\Users\\soro0\\work\\program\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\SettingWindow.xaml",
+              "RelativeToolTip": "AttendanceManagement\\SettingWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-10-23T12:47:17.005Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AttendanceInfo.cs",
+              "DocumentMoniker": "C:\\Users\\soro0\\work\\program\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\dao\\AttendanceInfo.cs",
+              "RelativeDocumentMoniker": "AttendanceManagement\\dao\\AttendanceInfo.cs",
+              "ToolTip": "C:\\Users\\soro0\\work\\program\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\dao\\AttendanceInfo.cs",
+              "RelativeToolTip": "AttendanceManagement\\dao\\AttendanceInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T12:45:58.404Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "SettingInfoSerializer.cs",
+              "DocumentMoniker": "C:\\Users\\soro0\\work\\program\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\Model\\SettingInfoSerializer.cs",
+              "RelativeDocumentMoniker": "AttendanceManagement\\Model\\SettingInfoSerializer.cs",
+              "ToolTip": "C:\\Users\\soro0\\work\\program\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\Model\\SettingInfoSerializer.cs",
+              "RelativeToolTip": "AttendanceManagement\\Model\\SettingInfoSerializer.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAIwCwAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T11:40:11.304Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "ExcelOperation.cs",
               "DocumentMoniker": "C:\\Users\\soro0\\work\\program\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\Model\\ExcelOperation.cs",
               "RelativeDocumentMoniker": "AttendanceManagement\\Model\\ExcelOperation.cs",
               "ToolTip": "C:\\Users\\soro0\\work\\program\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\Model\\ExcelOperation.cs",
               "RelativeToolTip": "AttendanceManagement\\Model\\ExcelOperation.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAAwCcAAABgAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAABXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-22T12:36:17.606Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-23T11:12:48.378Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\soro0\\work\\program\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "AttendanceManagement\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\soro0\\work\\program\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\AttendanceManagement\\MainWindow.xaml.cs",
+              "RelativeToolTip": "AttendanceManagement\\MainWindow.xaml.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAQwDgAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T10:16:32.853Z"
             }
           ]
         }

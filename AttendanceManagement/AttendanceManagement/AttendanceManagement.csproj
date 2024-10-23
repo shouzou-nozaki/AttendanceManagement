@@ -26,7 +26,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationRevision>7</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -179,6 +179,7 @@
     <Compile Include="dao\AttendanceInfo.cs" />
     <Compile Include="dao\SettingInfo.cs" />
     <Compile Include="Model\ExcelOperation.cs" />
+    <Compile Include="Model\AttendanceInfoSerializer.cs" />
     <Compile Include="Model\SettingInfoSerializer.cs" />
     <Compile Include="SettingWindow.xaml.cs">
       <DependentUpon>SettingWindow.xaml</DependentUpon>

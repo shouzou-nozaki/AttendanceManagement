@@ -5,28 +5,28 @@
         Title="勤たろう" Height="309" Width="620">
     <Grid Margin="10">
         <!-- 現在日時表示 -->
-        <TextBlock x:Name="txtSystemTime" Text="yyyy/MM/dd HH:mm" HorizontalAlignment="Right"></TextBlock>
+        <TextBlock x:Name="txtSystemTime" Text="yyyy/MM/dd HH:mm" HorizontalAlignment="Right" FontWeight="Bold"></TextBlock>
 
         <!-- 出勤ボタン -->
-        <Button x:Name="btnStart" Content="出勤" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Click="BtnStart_Click" Margin="20"  FontWeight="Bold"/>
+        <Button x:Name="btnStart" Content="出勤" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Click="BtnStart_Click" Margin="20"  FontWeight="Bold" FontSize="15"/>
         <!-- 出勤時間表示 -->
-        <Label Content="出勤時間" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,20,0,0"  FontWeight="Bold"/>
-        <TextBlock x:Name="lblStartTime" Text="-" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="250,20,0,0"  FontWeight="Bold"/>
+        <Label Content="出勤時間" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,18,0,0"  FontWeight="Bold" FontSize="15"/>
+        <TextBlock x:Name="lblStartTime" Text="-" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="250,24,0,0"  FontWeight="Bold" FontSize="15"/>
         
         <!-- 退勤ボタン -->
-        <Button x:Name="btnEnd"   Content="退勤" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Click="BtnEnd_Click"   Margin="20,70,0,0" IsEnabled="False" FontWeight="Bold"/>
+        <Button x:Name="btnEnd" Content="退勤" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Click="BtnEnd_Click" Margin="20,70,0,0" FontWeight="Bold" FontSize="15"/>
         <!-- 退勤時間表示 -->
-        <Label Content="退勤時間" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,70,0,0" FontWeight="Bold"/>
-        <TextBlock x:Name="lblEndTime" Text="-" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="250,70,0,0" FontWeight="Bold"/>
+        <Label Content="退勤時間" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,68,0,0" FontWeight="Bold" FontSize="15"/>
+        <TextBlock x:Name="lblEndTime" Text="-" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="250,74,0,0" FontWeight="Bold" FontSize="15"/>
 
         <!-- 勤務時間表示 -->
-        <Label Content="勤務時間" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,150,0,0" FontWeight="Bold"/>
-        <TextBlock x:Name="lblWorkHours" Text="-" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="250,150,0,0" FontWeight="Bold"/>
+        <Label Content="勤務時間" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,150,0,0" FontWeight="Bold" FontSize="15"/>
+        <TextBlock x:Name="lblWorkHours" Text="-" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="250,156,0,0" FontWeight="Bold" FontSize="15"/>
 
         <!-- メッセージ表示 -->
         <Label x:Name="lblMessage" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,200,0,0" FontWeight="Bold"/>
 
         <!-- 設定ボタン -->
-        <Button x:Name="btnSetting" Content="設定" Width="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="BtnSetting_Click" />
+        <Button x:Name="btnSetting" Content="設定" Width="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="BtnSetting_Click"  FontSize="15"/>
     </Grid>
 </Window>

@@ -8,12 +8,15 @@ using AttendanceManagement;
 using AttendanceManagement.dao;
 
 using AttendanceManagement.Model;
+using Xceed.Wpf.Toolkit.Core.Converters;
 
 
 namespace AttendanceApp
 {
     public partial class MainWindow : Window
     {
+        private AttendanceInfo AttendanceInfo { get; set; } = new AttendanceInfo();
+
         /// <summary>
         /// コンストラクタ
         /// </summary>
@@ -29,6 +32,12 @@ namespace AttendanceApp
 
             // タイマースタート
             timer.Start();
+
+            // 勤怠情報取得
+            var attendanceInfoSerialier = new AttendanceInfoSerializer();
+            this.AttendanceInfo = attendanceInfoSerialier.GetAttendanceInfo();
+
+            RePaint();
         }
 
         /// <summary>
@@ -44,10 +53,9 @@ namespace AttendanceApp
             // 日付変更時処理
             if (DateTime.Now.ToString("HH:mm").Equals("00:00"))
             {
-                // ボタン制御、ラベル表示を初期化
-                btnStart.IsEnabled = true;
-                btnEnd.IsEnabled = false;
-                lblMessage.Content = "";
+                // 勤怠情報を初期化
+                var attendanceInfoSerializer = new AttendanceInfoSerializer();
+                attendanceInfoSerializer.SetAttendanceInfo(new AttendanceInfo());
             }
         }
 
@@ -58,23 +66,18 @@ namespace AttendanceApp
         /// <param name="e"></param>
         private void BtnStart_Click(object sender, RoutedEventArgs e)
         {
-            // 出勤時間表示
-            var startTime = DateTime.Now;
-            lblStartTime.Text = startTime.ToString("HH:mm");
+            // 勤怠情報更新
+            this.AttendanceInfo.StartTime = DateTime.Now.ToString("HH:mm");
+            this.AttendanceInfo.EndTime = "";
+            this.AttendanceInfo.WorkTime = "";
+            this.AttendanceInfo.Message = "";
 
-            // 退勤時間クリア
-            lblEndTime.Text = "";
+            //画面再描画
+            RePaint();
 
-            // 出勤・退勤ボタン制御
-            this.btnStart.IsEnabled = false;
-            this.btnEnd.IsEnabled = true;
-
-            // メッセージクリア
-            lblMessage.Content = "";
-
-            // 勤務時間クリア
-            lblWorkHours.Text = "";
-
+            // 勤怠情報登録
+            var attendanceInfoSerialier = new AttendanceInfoSerializer();
+            attendanceInfoSerialier.SetAttendanceInfo(this.AttendanceInfo);
         }
 
         /// <summary>
@@ -84,19 +87,15 @@ namespace AttendanceApp
         /// <param name="e"></param>
         private void BtnEnd_Click(object sender, RoutedEventArgs e)
         {
-            // 現在時刻を表示
-            var endTime = DateTime.Now;
-            lblEndTime.Text = endTime.ToString("HH:mm");
+            // 勤怠情報更新
+            this.AttendanceInfo.EndTime = DateTime.Now.ToString("HH:mm");
 
-            // 勤務時間を計算して表示
-            TimeSpan workDuration = DateTime.Parse(lblEndTime.Text) - DateTime.Parse(lblStartTime.Text);
-            lblWorkHours.Text = workDuration.Hours.ToString("00") + ":" + workDuration.Minutes.ToString("00");
+            TimeSpan workDuration = DateTime.Parse(this.AttendanceInfo.EndTime) - DateTime.Parse(this.AttendanceInfo.StartTime);
+            this.AttendanceInfo.WorkTime = workDuration.Hours.ToString("00") + ":" + workDuration.Minutes.ToString("00");
+            this.AttendanceInfo.Message = "お疲れ様でした！また明日も頑張りましょう！";
 
-            // 勤怠情報クラスの作成
-            var attendanceInfo = new AttendanceInfo();
-            attendanceInfo.StartTime = lblStartTime.Text;
-            attendanceInfo.EndTime = lblEndTime.Text;
-            attendanceInfo.WorkTime = lblWorkHours.Text;
+            // 画面再描画
+            RePaint();
 
             // エクセル出力
             var settingInfoSerializer = new SettingInfoSerializer();
@@ -107,24 +106,17 @@ namespace AttendanceApp
             // ライセンス設定
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
-            IExcelOperation excelOperation = null;
+            // Excel操作オブジェクト作成
+            IExcelOperation excelOperation = new CreateNewExcel();
 
-            if (File.Exists(Path.Combine(settingInfo.ExcelFilePath, excelFileName)))
-            {
-                excelOperation = new UpdateExcel();
-            }
-            else
-            {
-                excelOperation = new CreateNewExcel();
-            }
-            excelOperation.SaveToExcel(settingInfo, attendanceInfo, excelFileName);
+            if (File.Exists(Path.Combine(settingInfo.ExcelFilePath, excelFileName))) excelOperation = new UpdateExcel();
 
-            // 出勤・退勤ボタン制御
-            this.btnStart.IsEnabled = true;
-            this.btnEnd.IsEnabled = false;
+            // Excel作成
+            excelOperation.SaveToExcel(settingInfo, this.AttendanceInfo, excelFileName);
 
-            // メッセージ表示
-            lblMessage.Content = "お疲れ様でした！また明日も頑張りましょう！";
+            // 勤怠情報初期化
+            var attendanceInfoSerializer = new AttendanceInfoSerializer();
+            attendanceInfoSerializer.SetAttendanceInfo(new AttendanceInfo());
         }
 
         /// <summary>
@@ -137,6 +129,40 @@ namespace AttendanceApp
             // 設定画面を開く
             SettingWindow setting = new SettingWindow();
             setting.ShowDialog();
+        }
+
+        /// <summary>
+        /// 画面再描画
+        /// </summary>
+        private void RePaint()
+        {
+            lblStartTime.Text = this.AttendanceInfo.StartTime;
+            lblEndTime.Text = this.AttendanceInfo.EndTime;
+            lblWorkHours.Text = this.AttendanceInfo.WorkTime;
+            lblMessage.Content = this.AttendanceInfo.Message;
+
+            // 出勤・退勤時間ともになし
+            if (this.AttendanceInfo.StartTime.Equals("") && this.AttendanceInfo.EndTime.Equals(""))
+            {
+                btnStart.IsEnabled = true;
+                btnEnd.IsEnabled = false;
+                return;
+            }
+            // 出勤時間のみあり
+            if (!this.AttendanceInfo.StartTime.Equals("") && this.AttendanceInfo.EndTime.Equals(""))
+            {
+                btnStart.IsEnabled = false;
+                btnEnd.IsEnabled = true;
+                return;
+                
+            }
+            // 出勤・退勤時間ともにあり
+            if(!this.AttendanceInfo.StartTime.Equals("") && !this.AttendanceInfo.EndTime.Equals(""))
+            {
+                btnStart.IsEnabled = true;
+                btnEnd.IsEnabled = false;
+                return;
+            }
         }
 
     }
