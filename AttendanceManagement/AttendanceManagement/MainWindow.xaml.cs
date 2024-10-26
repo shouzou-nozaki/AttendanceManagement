@@ -56,6 +56,7 @@ namespace AttendanceApp
                 // 勤怠情報を初期化
                 var attendanceInfoSerializer = new AttendanceInfoSerializer();
                 attendanceInfoSerializer.SetAttendanceInfo(new AttendanceInfo());
+                RePaint();
             }
         }
 
