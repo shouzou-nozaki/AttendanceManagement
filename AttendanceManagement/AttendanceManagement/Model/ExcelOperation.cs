@@ -37,7 +37,7 @@ namespace AttendanceManagement.Model
             //var templateFolder = @"C:\Users\soro0\work\program\AttendanceManagement\AttendanceManagement\AttendanceManagement\AttendanceManagement\Template";
             var templateFolder = AppDomain.CurrentDomain.BaseDirectory;
             var templateFile = "template.xlsx";
-            File.Copy($"{Path.Combine(templateFolder, templateFile)}", $"{Path.Combine(settingInfo.ExcelFilePath, excelFileName)}");
+            File.Copy($@"{Path.Combine(templateFolder, templateFile)}", $@"{Path.Combine(settingInfo.ExcelFilePath, excelFileName)}");
         }
 
 
