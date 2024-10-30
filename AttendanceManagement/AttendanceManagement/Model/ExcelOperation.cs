@@ -94,8 +94,12 @@ namespace AttendanceManagement.Model
             // ワークシート読み込み
             var workSheets_thisMonth = package.Workbook.Worksheets[this.SheetName_ThisMonth] ?? MakeExcelFrame(package, settingInfo);
 
-            // 実稼働時間を取得(基本は、出勤時間 - 退勤時間)
-            var actualWorkTime = attendanceInfo.WorkTime;
+            // 実稼働時間を取得(基本は、退勤時間 - 始業時間)
+            var actualWorkTime = (DateTime.Parse(attendanceInfo.EndTime) - DateTime.Parse(settingInfo.StartTime_Comp)).ToString(@"hh\:mm");
+            
+            // 遅刻したときは、退勤時間 - 出勤時間
+            if(DateTime.Parse(settingInfo.StartTime_Comp) < DateTime.Parse(attendanceInfo.StartTime)) actualWorkTime = attendanceInfo.WorkTime;
+
 
             // 出勤時間と退勤時間の間に、休憩時間があるときは実稼働時間として休憩分を引く
             var breakTime = (DateTime.Parse(settingInfo.BreakTo) - DateTime.Parse(settingInfo.BreakFrom)).ToString(@"hh\:mm");
@@ -103,14 +107,15 @@ namespace AttendanceManagement.Model
             if (DateTime.Parse(attendanceInfo.StartTime) <= DateTime.Parse(settingInfo.BreakFrom) &&
                 DateTime.Parse(settingInfo.BreakTo) <= DateTime.Parse(attendanceInfo.EndTime))
             {
-                actualWorkTime = (DateTime.Parse(attendanceInfo.WorkTime) - DateTime.Parse(breakTime.ToString())).ToString(@"hh:mm");
+                actualWorkTime = (DateTime.Parse(actualWorkTime) - DateTime.Parse(breakTime)).ToString(@"hh\:mm");
             }
+            
 
             // 始業時刻より前の打刻はしない
-            var startTime = (DateTime.Parse(attendanceInfo.StartTime) < DateTime.Parse(settingInfo.StartTime_Comp)) ? settingInfo.StartTime_Comp : attendanceInfo.StartTime;
+            //var startTime = (DateTime.Parse(attendanceInfo.StartTime) < DateTime.Parse(settingInfo.StartTime_Comp)) ? settingInfo.StartTime_Comp : attendanceInfo.StartTime;
 
             // 勤怠情報書き込み
-            workSheets_thisMonth.Cells[$"C{5 + int.Parse(DateTime.Now.ToString("dd"))}"].Value = DateTime.Parse(startTime);                // 出勤時間
+            workSheets_thisMonth.Cells[$"C{5 + int.Parse(DateTime.Now.ToString("dd"))}"].Value = DateTime.Parse(attendanceInfo.StartTime); // 出勤時間
             workSheets_thisMonth.Cells[$"D{5 + int.Parse(DateTime.Now.ToString("dd"))}"].Value = DateTime.Parse(attendanceInfo.EndTime);   // 退勤時間
             workSheets_thisMonth.Cells[$"E{5 + int.Parse(DateTime.Now.ToString("dd"))}"].Value = DateTime.Parse(attendanceInfo.WorkTime);  // 勤務時間
             workSheets_thisMonth.Cells[$"F{5 + int.Parse(DateTime.Now.ToString("dd"))}"].Value = DateTime.Parse(breakTime);                // 休憩時間
