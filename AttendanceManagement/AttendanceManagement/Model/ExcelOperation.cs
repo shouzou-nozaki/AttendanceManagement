@@ -115,11 +115,11 @@ namespace AttendanceManagement.Model
             //var startTime = (DateTime.Parse(attendanceInfo.StartTime) < DateTime.Parse(settingInfo.StartTime_Comp)) ? settingInfo.StartTime_Comp : attendanceInfo.StartTime;
 
             // 勤怠情報書き込み
-            workSheets_thisMonth.Cells[$"C{5 + int.Parse(DateTime.Now.ToString("dd"))}"].Value = DateTime.Parse(attendanceInfo.StartTime); // 出勤時間
-            workSheets_thisMonth.Cells[$"D{5 + int.Parse(DateTime.Now.ToString("dd"))}"].Value = DateTime.Parse(attendanceInfo.EndTime);   // 退勤時間
-            workSheets_thisMonth.Cells[$"E{5 + int.Parse(DateTime.Now.ToString("dd"))}"].Value = DateTime.Parse(attendanceInfo.WorkTime);  // 勤務時間
-            workSheets_thisMonth.Cells[$"F{5 + int.Parse(DateTime.Now.ToString("dd"))}"].Value = DateTime.Parse(breakTime);                // 休憩時間
-            workSheets_thisMonth.Cells[$"G{5 + int.Parse(DateTime.Now.ToString("dd"))}"].Value = DateTime.Parse(actualWorkTime);           // 実稼働時間
+            workSheets_thisMonth.Cells[$"C{5 + int.Parse(DateTime.Now.ToString("dd"))}"].Value = attendanceInfo.StartTime; // 出勤時間
+            workSheets_thisMonth.Cells[$"D{5 + int.Parse(DateTime.Now.ToString("dd"))}"].Value = attendanceInfo.EndTime;   // 退勤時間
+            workSheets_thisMonth.Cells[$"E{5 + int.Parse(DateTime.Now.ToString("dd"))}"].Value = attendanceInfo.WorkTime;  // 勤務時間
+            workSheets_thisMonth.Cells[$"F{5 + int.Parse(DateTime.Now.ToString("dd"))}"].Value = breakTime;                // 休憩時間
+            workSheets_thisMonth.Cells[$"G{5 + int.Parse(DateTime.Now.ToString("dd"))}"].Value = actualWorkTime;           //実稼働時間
 
             return workSheets_thisMonth;
 
