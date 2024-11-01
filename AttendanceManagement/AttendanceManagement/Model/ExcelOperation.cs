@@ -94,22 +94,28 @@ namespace AttendanceManagement.Model
             // ワークシート読み込み
             var workSheets_thisMonth = package.Workbook.Worksheets[this.SheetName_ThisMonth] ?? MakeExcelFrame(package, settingInfo);
 
-            // 実稼働時間を取得(基本は、退勤時間 - 始業時間)
-            var actualWorkTime = (DateTime.Parse(attendanceInfo.EndTime) - DateTime.Parse(settingInfo.StartTime_Comp)).ToString(@"hh\:mm");
-            
-            // 遅刻したときは、退勤時間 - 出勤時間
-            if(DateTime.Parse(settingInfo.StartTime_Comp) < DateTime.Parse(attendanceInfo.StartTime)) actualWorkTime = attendanceInfo.WorkTime;
+            // 実稼働時間をTimeSpanで取得（基本は、退勤時間 - 始業時間）
+            TimeSpan actualWorkTime = DateTime.Parse(attendanceInfo.EndTime) - DateTime.Parse(settingInfo.StartTime_Comp);
+
+            // 遅刻したときは、退勤時間 - 出勤時間を使用
+            if (DateTime.Parse(settingInfo.StartTime_Comp) < DateTime.Parse(attendanceInfo.StartTime))
+            {
+                actualWorkTime = TimeSpan.Parse(attendanceInfo.WorkTime); // 勤務時間をTimeSpanに変換
+            }
 
 
-            // 出勤時間と退勤時間の間に、休憩時間があるときは実稼働時間として休憩分を引く
-            var breakTime = (DateTime.Parse(settingInfo.BreakTo) - DateTime.Parse(settingInfo.BreakFrom)).ToString(@"hh\:mm");
+            // 出勤時間と退勤時間の間に休憩時間がある場合、休憩分を差し引く
+            TimeSpan breakTime = DateTime.Parse(settingInfo.BreakTo) - DateTime.Parse(settingInfo.BreakFrom);
 
             if (DateTime.Parse(attendanceInfo.StartTime) <= DateTime.Parse(settingInfo.BreakFrom) &&
                 DateTime.Parse(settingInfo.BreakTo) <= DateTime.Parse(attendanceInfo.EndTime))
             {
-                actualWorkTime = (DateTime.Parse(actualWorkTime) - DateTime.Parse(breakTime)).ToString(@"hh\:mm");
+                actualWorkTime -= breakTime;  
             }
-            
+
+            // hh:mm:ss形式で実稼働時間を設定
+            string actualWorkTimeFormatted = actualWorkTime.ToString(@"hh\:mm\:ss");
+
 
             // 始業時刻より前の打刻はしない
             //var startTime = (DateTime.Parse(attendanceInfo.StartTime) < DateTime.Parse(settingInfo.StartTime_Comp)) ? settingInfo.StartTime_Comp : attendanceInfo.StartTime;
